@@ -16,23 +16,23 @@ def add_contact(args, book):
         return "Contact exist"
 
 @input_error
-def change_contact(args, contacts):
+def change_contact(args, book):
     name, phone = args
-
-    if contacts.get(name):
-        contacts[name] = phone
+    find_record = book.find(name)
+    if book.get(name):
+        book[name] = phone
         return "Contact changed."
     else:
         return "Conctact not exist"
     
 @input_error
-def show_phone(args, contacts):
+def show_phone(args, book):
     name = args[0]
 
-    contacts_phone = contacts.get(name)
-
-    if contacts_phone:
-        return contacts_phone
+    contact = book.find(name)
+    found_phone=contact.find_phone(contact)
+    if contact:
+        return found_phone
 
     else:
         return "Conctact not exist"
@@ -59,3 +59,7 @@ def show_birthday(args, book):
 def birthdays(args, book):
     pass
     # реалізація
+
+
+
+# add Alex 1234569879

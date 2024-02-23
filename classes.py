@@ -41,7 +41,7 @@ class Record:
 
     def add_phone(self,phone):
         self.phones.append(Phone(phone)) # додавання  телефона за допомогою класа Phone
-        print(self.phones)
+        
         
     def remove_phone(self, phone):
         for el in self.phones:
@@ -61,9 +61,13 @@ class Record:
             raise ValueError('Phone doesn\'t exist')   
     
     def find_phone(self,phone):
-        for el in self.phones:
-            if el.value == phone:
-                return Phone(el.value)        #пошук номера
+        
+        if self.name == phone.name:
+            return self.phones[0]
+        
+        # for el in self.phones:
+        #     if el.value == phone:
+        #         return Phone(el.value)        #пошук номера
     
     def __str__(self):
         return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
@@ -110,6 +114,7 @@ class AddressBook(UserDict):
 
 #  # Пошук конкретного телефону у записі John
 # found_phone = john.find_phone("5555555555")
+
 # print(f"{john.name}: {found_phone}")  # Виведення: 5555555555
 
 # john.edit_phone("9223235555", "1234567890")
