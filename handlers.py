@@ -49,10 +49,14 @@ def show_all(book):
     return all_contacts
 
 
-@input_error
+# @input_error
 def add_birthday(args, book):
-    pass
-    # реалізація
+    name,date = args
+    contact=book.find(name)
+    if contact:  
+        b_day=contact.add_birthday(date)
+        return b_day
+
 
 @input_error
 def show_birthday(args, book):

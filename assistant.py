@@ -1,8 +1,8 @@
-from handlers import add_contact, change_contact, show_all,show_phone
-from decorators import input_error
+from handlers import add_contact, change_contact, show_all,show_phone, add_birthday,show_birthday,birthdays
+
 from classes import AddressBook
 
-# @input_error
+
 def parse_input(user_input):
     cmd, *args = user_input.split()
     cmd = cmd.strip().lower()
@@ -30,7 +30,13 @@ def main():
         elif command == "phone":
             print(show_phone(args,book))    
         elif command == "all":
-            print(show_all(book))    
+            print(show_all(book))
+        elif command == "add-birthday":
+            print(add_birthday(args,book))
+        elif command == "show-birthday":
+            print(show_birthday(args,book))
+        elif command == "birthdays":
+            print(birthdays(args,book))                
 
         else:
             print("Invalid command.")
