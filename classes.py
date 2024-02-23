@@ -60,6 +60,10 @@ class Record:
         self.birthday= Birthday(b_day)   
         return self.birthday
     
+    def show_birthday(self,name):
+        if self.name.value == name:
+            return self.birthday
+    
     def __str__(self):
         print(self.phone)
         return f"Contact name: {self.name.value}, phone: {self.phone}"

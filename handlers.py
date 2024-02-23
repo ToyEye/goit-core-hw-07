@@ -49,19 +49,30 @@ def show_all(book):
     return all_contacts
 
 
-# @input_error
+@input_error
 def add_birthday(args, book):
     name,date = args
     contact=book.find(name)
+    
     if contact:  
-        b_day=contact.add_birthday(date)
-        return b_day
+        contact.add_birthday(date)
+        return "B-day Added"
+    
+    else:
+        return "Conctact not exist"
 
 
 @input_error
 def show_birthday(args, book):
-    pass
-    # реалізація
+    name = args[0]
+    
+    contact=book.find(name)
+    
+    if contact:
+        b_day=contact.show_birthday(name)
+        return b_day
+    else:
+        return "Conctact not exist"
 
 @input_error
 def birthdays(args, book):
@@ -71,3 +82,5 @@ def birthdays(args, book):
 
 
 # add Alex 1234569879
+# add-birthday Alex 17.12.1990
+# show-birthday Alex
