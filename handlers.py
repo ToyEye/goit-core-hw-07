@@ -40,10 +40,13 @@ def show_phone(args, book):
     
 @input_error
 def show_all(book):
-    print(book)
+    all_contacts = []
+    
     for name, record in book.data.items():
-        print(record)
-        return record
+         
+        all_contacts.append(str(record))
+          
+    return all_contacts
 
 
 @input_error
