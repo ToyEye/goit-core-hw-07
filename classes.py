@@ -54,25 +54,16 @@ class Record:
 
         self.phones[0]= new_phone
         
-        # for phone in self.phones:
-        #     if phone.value == old_phone:
-        #         phone.value = new_phone  # зміна номера
-                
-        #         break  
-        # else:
-        #     raise ValueError('Phone doesn\'t exist')   
     
     def find_phone(self,phone):
         
         if self.name == phone.name:
             return self.phones[0]
         
-        # for el in self.phones:
-        #     if el.value == phone:
-        #         return Phone(el.value)        #пошук номера
     
     def __str__(self):
-        return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
+        print(self.phones)
+        return f"Contact name: {self.name.value}, phones: {self.phones[0]}"
     
 
 class AddressBook(UserDict):
