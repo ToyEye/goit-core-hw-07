@@ -18,9 +18,10 @@ def add_contact(args, book):
 @input_error
 def change_contact(args, book):
     name, phone = args
-    find_record = book.find(name)
-    if book.get(name):
-        book[name] = phone
+    contact = book.find(name)
+   
+    if contact:
+        contact.edit_phone(phone)
         return "Contact changed."
     else:
         return "Conctact not exist"
@@ -30,8 +31,8 @@ def show_phone(args, book):
     name = args[0]
 
     contact = book.find(name)
-    found_phone=contact.find_phone(contact)
     if contact:
+        found_phone=contact.find_phone(contact)
         return found_phone
 
     else:
