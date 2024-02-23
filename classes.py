@@ -36,34 +36,30 @@ class Birthday(Field):
 class Record:
     def __init__(self, name):
         self.name = Name(name)
-        self.phones = []
+        self.phone = ''
         self.birthday = Birthday(None)
 
     def add_phone(self,phone):
-        self.phones.append(Phone(phone)) # додавання  телефона за допомогою класа Phone
+        self.phone = Phone(phone) # додавання  телефона за допомогою класа Phone
         
-        
-    def remove_phone(self, phone):
-        for el in self.phones:
-            if el.value == phone:
-                self.phones.remove(el) #видалення телефону
         
     def edit_phone(self, new_phone):
         
         Phone(new_phone)
 
-        self.phones[0]= new_phone
+        self.phone= new_phone
         
     
     def find_phone(self,phone):
+
         
         if self.name == phone.name:
-            return self.phones[0]
+            return self.phone
         
     
     def __str__(self):
-        print(self.phones)
-        return f"Contact name: {self.name.value}, phones: {self.phones[0]}"
+        print(self.phone)
+        return f"Contact name: {self.name.value}, phone: {self.phone}"
     
 
 class AddressBook(UserDict):
@@ -72,12 +68,8 @@ class AddressBook(UserDict):
         
 
     def find(self, name):
-
         return self.data.get(name)   #пошук запису
             
-    def delete(self, name):
-        if name in self.data:
-           del self.data[name]     #видалення запису
             
 # Створення нової адресної книги
 # book = AddressBook()
