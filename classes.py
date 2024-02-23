@@ -41,6 +41,7 @@ class Record:
 
     def add_phone(self,phone):
         self.phones.append(Phone(phone)) # додавання  телефона за допомогою класа Phone
+        print(self.phones)
         
     def remove_phone(self, phone):
         for el in self.phones:
@@ -71,8 +72,10 @@ class Record:
 class AddressBook(UserDict):
     def add_record(self,record):
         self.data[record.name.value]=record  #додавання запису
+        print(self.data)
 
     def find(self, name):
+
         return self.data.get(name)   #пошук запису
             
     def delete(self, name):
@@ -80,7 +83,7 @@ class AddressBook(UserDict):
            del self.data[name]     #видалення запису
             
 # Створення нової адресної книги
-book = AddressBook()
+# book = AddressBook()
 
 # # Створення запису для John
 # john_record = Record("John")
@@ -96,8 +99,8 @@ book = AddressBook()
 # book.add_record(jane_record)
 
 #  # Виведення всіх записів у книзі
-# # for name, record in book.data.items():
-# #     print(record)
+# for name, record in book.data.items():
+#     print(record)
 
 # # Знаходження та редагування телефону для John
 # john = book.find("John")

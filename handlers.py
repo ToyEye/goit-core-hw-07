@@ -1,11 +1,16 @@
 from decorators import input_error
-
+from classes import Record
 
 @input_error
-def add_contact(args, contacts):
+def add_contact(args, book):
     name, phone = args
-    if name not in contacts:
-        contacts[name] = phone
+    findName = book.find(name)
+    
+    if not findName :
+        new_record = Record(name)
+        new_record.add_phone(phone) 
+        book.add_record(new_record)
+        
         return "Contact added."
     else:
         return "Contact exist"
@@ -33,8 +38,11 @@ def show_phone(args, contacts):
         return "Conctact not exist"
     
 @input_error
-def show_all(contacts):
-    return contacts
+def show_all(book):
+    print(book)
+    for name, record in book.data.items():
+        print(record)
+        return record
 
 
 @input_error
