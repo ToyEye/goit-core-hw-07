@@ -1,5 +1,6 @@
 from decorators import input_error
 
+
 @input_error
 def add_contact(args, contacts):
     name, phone = args
@@ -34,3 +35,19 @@ def show_phone(args, contacts):
 @input_error
 def show_all(contacts):
     return contacts
+
+
+@input_error
+def add_birthday(args, book):
+    pass
+    # реалізація
+
+@input_error
+def show_birthday(args, book):
+    pass
+    # реалізація
+
+@input_error
+def birthdays(args, book):
+    pass
+    # реалізація

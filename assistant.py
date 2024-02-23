@@ -1,6 +1,6 @@
 from handlers import add_contact, change_contact, show_all,show_phone
 from decorators import input_error
-
+from classes import AddressBook
 # @input_error
 def parse_input(user_input):
     cmd, *args = user_input.split()
@@ -11,6 +11,7 @@ def parse_input(user_input):
 
 def main():
     contacts = {}
+    book = AddressBook
     print("Welcome to the assistant bot!")
     while True:
         user_input = input("Enter a command: ")
