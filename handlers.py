@@ -1,5 +1,6 @@
 from decorators import input_error
 from classes import Record
+from datetime import datetime
 
 @input_error
 def add_contact(args, book):
@@ -74,13 +75,21 @@ def show_birthday(args, book):
     else:
         return "Conctact not exist"
 
-@input_error
-def birthdays(args, book):
-    pass
-    # реалізація
-
-
+def birthdays(book):
+    
+    for name, record in book.data.items():
+        contact = book.find(name)
+        congrats = contact.birthdays(name)
+        if not congrats:
+            return 'No one to congratulate next week' 
+        
+        else:
+            yield congrats
+        
+ 
+        
 
 # add Alex 1234569879
-# add-birthday Alex 17.12.1990
+# add-birthday Alex 26.02.1990
 # show-birthday Alex
+# birthdays

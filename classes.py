@@ -1,5 +1,6 @@
 from collections import UserDict
 from datetime import datetime
+from  helpers import get_upcoming_birthdays
 
 class Field:
     def __init__(self, value):
@@ -63,10 +64,17 @@ class Record:
     def show_birthday(self,name):
         if self.name.value == name:
             return self.birthday
+        
+    def birthdays(self,name):
+        if self.name.value == name and self.birthday:
+              user={"name":self.name.value,"birthday":self.birthday.value.strftime("%d.%m.%Y") }  
+              b_day = get_upcoming_birthdays(user)
+              return b_day
+         
     
     def __str__(self):
         print(self.phone)
-        return f"Contact name: {self.name.value}, phone: {self.phone}"
+        return f"Contact name: {self.name.value}, phone: {self.phone}, birthday: {self.birthday}"
     
 
 class AddressBook(UserDict):
@@ -77,42 +85,4 @@ class AddressBook(UserDict):
     def find(self, name):
         return self.data.get(name)   #пошук запису
             
-            
-# Створення нової адресної книги
-# book = AddressBook()
-
-# # Створення запису для John
-# john_record = Record("John")
-# john_record.add_phone("1234567890")
-# john_record.add_phone("5555555555")
-
-# # Додавання запису John до адресної книги
-# book.add_record(john_record)
-
-# # Створення та додавання нового запису для Jane
-# jane_record = Record("Jane")
-# jane_record.add_phone("9876543210")
-# book.add_record(jane_record)
-
-#  # Виведення всіх записів у книзі
-# for name, record in book.data.items():
-#     print(record)
-
-# # Знаходження та редагування телефону для John
-# john = book.find("John")
-# john.edit_phone("1234567890", "9223235555")
-
-# print(john)  # Виведення: Contact name: John, phones: 1112223333; 5555555555
-
-#  # Пошук конкретного телефону у записі John
-# found_phone = john.find_phone("5555555555")
-
-# print(f"{john.name}: {found_phone}")  # Виведення: 5555555555
-
-# john.edit_phone("9223235555", "1234567890")
-# print(john)
-# # for name, record in book.data.items():
-# #     print(record)
-
-# # Видалення запису Jane
-# book.delete("Jane")
+           

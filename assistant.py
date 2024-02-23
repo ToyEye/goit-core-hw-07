@@ -36,7 +36,8 @@ def main():
         elif command == "show-birthday":
             print(show_birthday(args,book))
         elif command == "birthdays":
-            print(birthdays(args,book))                
+            for result in birthdays(book):
+                print(result)                
 
         else:
             print("Invalid command.")
