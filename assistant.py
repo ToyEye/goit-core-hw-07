@@ -30,7 +30,8 @@ def main():
         elif command == "phone":
             print(show_phone(args,book))    
         elif command == "all":
-            print(show_all(book))
+            for result in show_all(book):
+                print(result)
         elif command == "add-birthday":
             print(add_birthday(args,book))
         elif command == "show-birthday":

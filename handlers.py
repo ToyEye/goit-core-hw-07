@@ -41,13 +41,10 @@ def show_phone(args, book):
     
 @input_error
 def show_all(book):
-    all_contacts = []
     
     for name, record in book.data.items():
          
-        all_contacts.append(str(record))
-          
-    return all_contacts
+       yield record
 
 
 @input_error
@@ -74,7 +71,8 @@ def show_birthday(args, book):
         return b_day
     else:
         return "Conctact not exist"
-
+    
+@input_error
 def birthdays(book):
     
     for name, record in book.data.items():

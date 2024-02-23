@@ -30,7 +30,8 @@ class Birthday(Field):
     def __init__(self, value):
         try:
             validDate = datetime.strptime(value,"%d.%m.%Y").date()
-            super().__init__(validDate)
+            formattedDate = validDate.strftime("%d.%m.%Y")            
+            super().__init__(formattedDate)
         
         except ValueError:
             raise ValueError("Invalid date format. Use DD.MM.YYYY")	
@@ -57,23 +58,22 @@ class Record:
             return self.phone
     
     def add_birthday(self,b_day):
-        
         self.birthday= Birthday(b_day)   
         return self.birthday
     
     def show_birthday(self,name):
         if self.name.value == name:
+            
             return self.birthday
         
     def birthdays(self,name):
         if self.name.value == name and self.birthday:
-              user={"name":self.name.value,"birthday":self.birthday.value.strftime("%d.%m.%Y") }  
+              user={"name":self.name.value,"birthday":self.birthday.value }  
               b_day = get_upcoming_birthdays(user)
               return b_day
          
     
     def __str__(self):
-        print(self.phone)
         return f"Contact name: {self.name.value}, phone: {self.phone}, birthday: {self.birthday}"
     
 
