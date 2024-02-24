@@ -85,7 +85,16 @@ def birthdays(book):
         else:
             yield congrats
         
- 
+@input_error
+def delete_contact(args,book):
+    name=args[0]
+    
+    contact = book.find(name)
+    if contact:
+        book.delete(name)
+        return f"Contact {name} deleted"
+    else:
+        return f"Contact {name} don't exist" 
         
 
 # add Alex 1234569879
