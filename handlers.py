@@ -12,17 +12,18 @@ def add_contact(args, book):
         new_record.add_phone(phone) 
         book.add_record(new_record)
         
-        return "Contact added."
+        return f"Contact {name} added."
     else:
-        return "Contact exist"
+        findName.add_phone(phone)
+        return f"Phone added to contact {name}."
 
 @input_error
 def change_contact(args, book):
-    name, phone = args
+    name, old_phone,new_phone = args
     contact = book.find(name)
    
     if contact:
-        contact.edit_phone(phone)
+        contact.edit_phone(old_phone,new_phone)
         return "Contact changed."
     else:
         return "Conctact not exist"
