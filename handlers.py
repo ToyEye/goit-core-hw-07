@@ -30,11 +30,11 @@ def change_contact(args, book):
     
 @input_error
 def show_phone(args, book):
-    name = args[0]
+    name,phone = args
 
     contact = book.find(name)
     if contact:
-        found_phone=contact.find_phone(contact)
+        found_phone=contact.find_phone(phone)
         return found_phone
 
     else:
