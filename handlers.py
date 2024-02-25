@@ -43,13 +43,29 @@ def change_contact(args, book):
 @input_error
 def show_phone(args, book):
     name = args[0]
-    print("nandler",args)
     contact = book.find(name)
+   
     if contact:
         return contact
 
     else:
         return "Conctact not exist"
+
+@input_error
+def find_phone(args,book):
+    name,phone = args
+
+    contact = book.find(name)
+    if contact:
+        found_phone=contact.find_phone(phone)
+        if found_phone:
+            return found_phone
+        else:
+            return "phone not found"
+
+    else:
+        return "Conctact not exist"
+    
     
 @input_error
 def show_all(book):

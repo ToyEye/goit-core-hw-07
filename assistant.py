@@ -1,4 +1,4 @@
-from handlers import add_contact,remove_phone, change_contact, show_all,show_phone,delete_contact, add_birthday,show_birthday,birthdays
+from handlers import add_contact,remove_phone,find_phone, change_contact, show_all,show_phone,delete_contact, add_birthday,show_birthday,birthdays
 
 from classes import AddressBook
 
@@ -28,7 +28,9 @@ def main():
         elif command =='change':
             print(change_contact(args,book))
         elif command == "phone":
-            print(show_phone(args,book))    
+            print(show_phone(args,book))
+        elif command == "find-phone":
+            print(find_phone(args,book))         
         elif command == "all":
             for result in show_all(book):
                 print(result)
