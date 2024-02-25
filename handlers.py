@@ -5,17 +5,29 @@ from datetime import datetime
 @input_error
 def add_contact(args, book):
     name, phone = args
-    findName = book.find(name)
+    find_name = book.find(name)
     
-    if not findName :
+    if not find_name :
         new_record = Record(name)
         new_record.add_phone(phone) 
         book.add_record(new_record)
         
         return f"Contact {name} added."
     else:
-        findName.add_phone(phone)
+        find_name.add_phone(phone)
         return f"Phone added to contact {name}."
+
+@input_error
+def remove_phone(args,book):
+    name,phone = args
+    find_name = book.find(name)
+    
+    if find_name:
+        find_name.remove_phone(phone)
+    
+        return f"{phone} is deleted"
+    else:
+        return f"Can't find {phone} in phonebook"    
 
 @input_error
 def change_contact(args, book):
@@ -35,7 +47,10 @@ def show_phone(args, book):
     contact = book.find(name)
     if contact:
         found_phone=contact.find_phone(phone)
-        return found_phone
+        if found_phone:
+            return found_phone
+        else:
+            return "phone not found"
 
     else:
         return "Conctact not exist"

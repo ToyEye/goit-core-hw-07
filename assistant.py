@@ -1,4 +1,4 @@
-from handlers import add_contact, change_contact, show_all,show_phone,delete_contact, add_birthday,show_birthday,birthdays
+from handlers import add_contact,remove_phone, change_contact, show_all,show_phone,delete_contact, add_birthday,show_birthday,birthdays
 
 from classes import AddressBook
 
@@ -32,6 +32,8 @@ def main():
         elif command == "all":
             for result in show_all(book):
                 print(result)
+        elif command == "remove":
+            print(remove_phone(args,book))           
         elif command == "add-birthday":
             print(add_birthday(args,book))
         elif command == "show-birthday":

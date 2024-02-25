@@ -18,10 +18,9 @@ class Name(Field):
             raise ValueError("Incorrect name")
 		
 
-class Phone(Field):
-    
+class Phone(Field): 
     def __init__(self, value):
-        if len(value) == 10 and value.isdigit() :
+        if len(value) == 10 and value.isdigit():
             super().__init__(value)
         else:
             raise ValueError('Incorrect phone format')
@@ -30,8 +29,8 @@ class Birthday(Field):
     def __init__(self, value):
         try:
             validDate = datetime.strptime(value,"%d.%m.%Y").date()
-            formattedDate = validDate.strftime("%d.%m.%Y")            
-            super().__init__(formattedDate)
+                       
+            super().__init__(validDate)
         
         except ValueError:
             raise ValueError("Invalid date format. Use DD.MM.YYYY")	
@@ -44,7 +43,11 @@ class Record:
 
     def add_phone(self,phone):
         self.phones.append(Phone(phone)) # додавання  телефона за допомогою класа Phone
-        
+    
+    def remove_phone(self, phone):
+        for el in self.phones:
+            if el.value == phone:
+                self.phones.remove(el) #видалення телефону    
         
     def edit_phone(self, old_phone, new_phone):
         
@@ -62,7 +65,7 @@ class Record:
     def find_phone(self,phone):
         for el in self.phones:
             if el.value == phone:
-                return Phone(el.value)
+                return el
     
     def add_birthday(self,b_day):
         self.birthday= Birthday(b_day)   
@@ -71,11 +74,11 @@ class Record:
     def show_birthday(self,name):
         if self.name.value == name:
             
-            return self.birthday
+            return self.birthday.value.strftime("%d.%m.%Y")
         
     def birthdays(self,name):
         if self.name.value == name and self.birthday:
-              user={"name":self.name.value,"birthday":self.birthday.value }  
+              user={"name":self.name.value,"birthday":self.birthday.value.strftime("%d.%m.%Y") }  
               b_day = get_upcoming_birthdays(user)
               return b_day
          
