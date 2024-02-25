@@ -1,5 +1,6 @@
 def input_error(func):
     def inner(*args, **kwargs):
+        print("deco",*args)
         try:
             return func(*args, **kwargs)
         except KeyError:

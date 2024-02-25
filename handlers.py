@@ -42,15 +42,11 @@ def change_contact(args, book):
     
 @input_error
 def show_phone(args, book):
-    name,phone = args
-
+    name = args[0]
+    print("nandler",args)
     contact = book.find(name)
     if contact:
-        found_phone=contact.find_phone(phone)
-        if found_phone:
-            return found_phone
-        else:
-            return "phone not found"
+        return contact
 
     else:
         return "Conctact not exist"
