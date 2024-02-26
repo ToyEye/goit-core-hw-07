@@ -96,7 +96,9 @@ def show_birthday(args, book):
     
     if contact:
         b_day=contact.show_birthday(name)
-        return b_day
+        if b_day:
+            return b_day
+        return "Please add b-day for contact"
     else:
         return "Conctact not exist"
     

@@ -73,8 +73,8 @@ class Record:
     
     def show_birthday(self,name):
         if self.name.value == name:
-            
-            return self.birthday.value.strftime("%d.%m.%Y")
+            if self.birthday:
+                return self.birthday.value.strftime("%d.%m.%Y")
         
     def birthdays(self,name):
         if self.name.value == name and self.birthday:
